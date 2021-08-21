@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300&display=swap" rel="stylesheet"> 
+
+        <title>Hextester</title>
+
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Urbanist', sans-serif;
+            }
+            .palette {
+                width: 100vw;
+                height: 90vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .palette h1 {
+                margin: 0;
+            }
+            .selector {
+                width: 100vw;
+                height: 10vh;
+                background-color: rgb(198, 198, 214);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            input {
+                border: none;
+                border-radius: 10px;
+                padding: 10px 10px 10px 25px;
+            }
+
+            .hex-sign {
+                transform: translate(20px, 1px);
+                color: #7d7d7d;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="palette">
+            <h1 id="hex-text">#FFFFFF</h1>
+        </div>
+        <div class="selector">
+            <span class="hex-sign">#</span><input id="input">
+        </div>
+
+        <script>
+            document.querySelector('#input').addEventListener('keypress', (event) => {
+                if (event.key === "Enter" && document.querySelector('#input').value.length === 6) {
+                    let hexValue = document.querySelector('#input').value;
+
+                    document.querySelector('.palette').style.backgroundColor = "#" + hexValue;
+                    document.querySelector('#hex-text').textContent = "#" + hexValue;
+                }
+            })
+        </script>
+    </body>
+</html>
